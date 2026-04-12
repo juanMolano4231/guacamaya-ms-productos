@@ -39,3 +39,6 @@ out/
 
 ### Debugging ###
 output.txt
+
+
+node_modules/
