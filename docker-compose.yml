@@ -2,14 +2,9 @@ services:
   app:
     build: .
     ports:
-      - "8082:3000" # external 8082 → container 3000
-    environment:
-      - PORT=3000
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_NAME=guacamaya_productos
-      - DB_USER=postgres
-      - DB_PASSWORD=ikEvs1crXV2ewH4SD0v0
+      - "8082:3000"
+    env_file:
+      - .env
     depends_on:
       - db
 
@@ -20,7 +15,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ikEvs1crXV2ewH4SD0v0
     ports:
-      - "5435:5432" # external 5435 to avoid conflict with auth
+      - "5435:5432"
     volumes:
       - pgdata_productos:/var/lib/postgresql/data
 
