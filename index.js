@@ -9,6 +9,16 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'http://frontend-url',
+    credentials: true
+}));
+
 // Routes
 app.use('/categories', categoryRoutes);
 app.use('/products', productRoutes);
